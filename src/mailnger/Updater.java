@@ -31,7 +31,7 @@ public class Updater {
         String checkListString = "SELECT LIST_NAME FROM LISTS " +
                 "WHERE LIST_NAME = ?";
         String checkSubscriptionString = "SELECT * FROM SUBSCRIPTIONS " +
-                "WHERE List_NAME = ? AND EMAIL = ?";
+                "WHERE LIST_NAME = ? AND EMAIL = ?";
         String addEmailString = "INSERT INTO USERS (EMAIL, MEMBER) " +
                 "VALUES (?,?)";
         String addSubscriptionString = "INSERT INTO SUBSCRIPTIONS (LIST_NAME, EMAIL) " +
