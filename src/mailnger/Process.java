@@ -5,9 +5,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+
 import emailvalidator.*;
+
+import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
 
 /**
  * Created by Parker on 6/27/2017.
@@ -18,11 +23,13 @@ import emailvalidator.*;
 public class Process extends HttpServlet {
 
     // Calls doGet
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         doGet(request, response);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         // Set response content type
         response.setContentType("text/html; charset=UTF-8");
 
