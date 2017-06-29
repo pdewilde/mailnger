@@ -1,5 +1,4 @@
 package mailnger;
-import com.mysql.jdbc.Driver;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,6 +9,10 @@ import java.util.Scanner;
  * Created by Parker on 6/28/2017.
  */
 public class Updater {
+    private static final String SQLURL = "jdbc:mysql://db4free.net:3306/abmailab";
+    private static final String SQLUSER = "abmailab";
+    private static final String SQLPASS = "abmailab";
+
     public static boolean update(String email, String listName, boolean subscribe) {
         boolean updated = false;
 
@@ -137,7 +140,7 @@ public class Updater {
     }
 
     // Adapted from https://docs.oracle.com/javase/tutorial/jdbc/basics/sqlexception.html
-    public static void printSQLException(SQLException ex) {
+    private static void printSQLException(SQLException ex) {
 
         for (Throwable e : ex) {
             if (e instanceof SQLException) {
@@ -160,7 +163,7 @@ public class Updater {
     }
 
     // Gets connection to SQL server
-    public static Connection getConnection() throws SQLException{
+    private static Connection getConnection() throws SQLException{
         String[] credentials = readCredentials(); // URL, Username, Password
         Connection conn = DriverManager.getConnection(credentials[0], credentials[1], credentials[2]);
         return conn;
@@ -169,8 +172,13 @@ public class Updater {
     // Reads credentials from credentials.txt file
     // Should be formatted as three lines, URL, Username, Password
     // Stops program is something is wrong with credentials file
-    public static String[] readCredentials() {
+    private static String[] readCredentials() {
         String[] credentials = new String[3];
+        credentials[0] = SQLURL;
+        credentials[1] = SQLUSER;
+        credentials[2] = SQLPASS;
+        //TODO: Figure out why credential file not found in production
+        /*
         try {
             Scanner credentialReader = new Scanner(new File("credentials.txt"));
             for (int i = 0; i < 3; i++) {
@@ -191,6 +199,7 @@ public class Updater {
             System.err.println("Improperly Formatted Credentials File");
             System.exit(0);
         }
+        */
         return credentials;
     }
 }
