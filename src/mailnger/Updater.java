@@ -81,7 +81,7 @@ public class Updater {
             // See if user is subscribed to list
             checkSubscription.setString(1, listName);
             checkSubscription.setString(2, email);
-            boolean subscribed = addList.executeQuery().next();
+            boolean subscribed = checkSubscription.executeQuery().next();
 
             // If subscribed and wants to unsubscribe, remove
             if(subscribed && !subscribe) {
