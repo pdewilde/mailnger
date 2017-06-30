@@ -1,8 +1,8 @@
-#Mailnger (Mail Manager)
+# Mailnger (Mail Manager)
 
-#####A simple Java EE app for managing mailing lists
+##### A simple Java EE app for managing mailing lists
 
-###Features:
+### Features:
 * Online User Sign-Up and Unsubscribe
 * MySQL Database Backend
 * Privliged and Unprivliged Accounts to allow for restricted mailing lists
@@ -57,7 +57,7 @@ SUBSCRIPTIONS
 * EMAIL (varchar 255) Primary Key
 
 ---
-###Tomcat Setup
+### Tomcat Setup
 [I setup with these instructions](https://www.linode.com/docs/development/frameworks/apache-tomcat-on-ubuntu-16-04)
 
 You can deploy the WAR using the web manager, but if you want your app to be root add the
