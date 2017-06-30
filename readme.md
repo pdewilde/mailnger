@@ -38,7 +38,7 @@ You are welcome to use the default database as a test server. I do not run it an
 no garuntee of its continued maitance.
 ___
 
-### SQL Database
+### MySQL Database
 
 I will in the future develop a tool to set up the database, but for now you can create the tables manually.
 
@@ -55,3 +55,23 @@ LISTS
 SUBSCRIPTIONS
 * LIST_NAME (varchar 100) Primary Key
 * EMAIL (varchar 255) Primary Key
+
+---
+###Tomcat Setup
+[I setup with these instructions](https://www.linode.com/docs/development/frameworks/apache-tomcat-on-ubuntu-16-04)
+
+You can deploy the WAR using the web manager, but if you want your app to be root add the
+following lines inside the <Host> section in server.xml.
+
+```
+<Context path="" docBase="myAPP"/>
+<Context path="ROOT" docBase="ROOT"/>
+```
+
+Additionally, to use port 80, remove comment on the #AUTHBIND=no in /etc/default/tomcat7
+and set the value to yes.
+
+## Future Improvements
+
+* Switch To DataSource from DataManager implementation for best practices
+* Create Management Client or Web Interface
