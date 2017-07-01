@@ -97,7 +97,9 @@ public class Process extends HttpServlet {
             out.println("<a href=\"\\\">Return To Home</a>");
             out.println("</body>");
             out.println("</html>");
-        } finally {
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally{
             out.close();
         }
     }

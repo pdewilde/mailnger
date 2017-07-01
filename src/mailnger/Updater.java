@@ -3,6 +3,7 @@ package mailnger;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.*;
+import java.sql.DriverManager;
 import java.util.Scanner;
 
 /**
@@ -13,10 +14,17 @@ public class Updater {
     private static final String SQLUSER = "abmailab";
     private static final String SQLPASS = "abmailab";
 
+
     public static boolean update(String email, String listName, boolean subscribe) {
         boolean updated = false;
 
-        // Declare variables as null here so can close if necessary given exception
+        // This loads the driver into DriverManager
+        try{
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+        } catch (Exception ex){
+            ex.printStackTrace(System.err);
+        }
+
         Connection conn = null;
 
         // Prepared Statements avoid SQL Injection
